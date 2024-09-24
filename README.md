@@ -1,1 +1,1 @@
-> These are my neovim setup configurations in lua.
+> These are my neovim setup configurations in lua
