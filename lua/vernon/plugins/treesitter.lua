@@ -20,7 +20,8 @@ return {
         "json", "javascript", "typescript", "tsx", "yaml", "html",
         "css", "prisma", "markdown", "markdown_inline", "lua",
         "bash", "vim", "dockerfile", "gitignore", "php", "rust",
-        "go", "sql", "python"
+        "go", "sql", "python", "rust", "astro", "markdown", "markdown_inline",
+        "dart"
       },
     })
   end,

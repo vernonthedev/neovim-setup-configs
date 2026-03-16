@@ -20,6 +20,14 @@ return {
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
         },
+        file_ignore_patterns = {
+          "node_modules",
+          "target", -- Rust build files
+          "vendor", -- PHP/Laravel dependencies
+          ".git/",
+          "dist",
+          "build",
+        },"out/"
       },
     })
 
