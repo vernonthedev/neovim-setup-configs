@@ -11,12 +11,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("vernon.plugins",{
-     checker = {
+require("lazy").setup({
+  { import = "vernon.plugins" },
+}, {
+  checker = {
     enabled = true,
     notify = false,
   },
-    change_detection = {
-        notify = false,
-    },
+  change_detection = {
+    notify = false,
+  },
 })

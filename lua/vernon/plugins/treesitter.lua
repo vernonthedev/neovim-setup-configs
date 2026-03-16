@@ -6,62 +6,21 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    -- import nvim-treesitter plugin
-    -- local treesitter = require("nvim-treesitter.configs")
-    -- Use a protected call to handle loading order issues
     local status, treesitter = pcall(require, "nvim-treesitter.configs")
     if not status then
-        return
+      vim.cmd("TSUpdate")
+      return
     end
 
-    -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
-      highlight = {
-        enable = true,
-      },
-      -- enable indentation
+    treesitter.setup({
+      highlight = { enable = true },
       indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-      },
-      -- ensure these language parsers are installed
+      autotag = { enable = true },
       ensure_installed = {
-        "json",
-        "javascript",
-        "typescript",
-        "tsx",
-        "yaml",
-        "html",
-        "css",
-        "prisma",
-        "markdown",
-        "markdown_inline",
-        "svelte",
-        "graphql",
-        "bash",
-        "lua",
-        "vim",
-        "dockerfile",
-        "gitignore",
-        "query",
-        "vimdoc",
-        "c",
-        "dart",
-        "java",
-        "php",
-        "sql",
-        "vue",
-        "python",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
+        "json", "javascript", "typescript", "tsx", "yaml", "html",
+        "css", "prisma", "markdown", "markdown_inline", "lua",
+        "bash", "vim", "dockerfile", "gitignore", "php", "rust",
+        "go", "sql", "python"
       },
     })
   end,
