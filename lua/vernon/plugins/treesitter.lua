@@ -7,7 +7,12 @@ return {
   },
   config = function()
     -- import nvim-treesitter plugin
-    local treesitter = require("nvim-treesitter.configs")
+    -- local treesitter = require("nvim-treesitter.configs")
+    -- Use a protected call to handle loading order issues
+    local status, treesitter = pcall(require, "nvim-treesitter.configs")
+    if not status then
+        return
+    end
 
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
