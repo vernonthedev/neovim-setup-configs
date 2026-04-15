@@ -42,3 +42,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- Required for markdown symbols and images to render properly
+vim.opt.conceallevel = 2
