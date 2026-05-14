@@ -96,6 +96,8 @@ end
 pcall(vim.cmd, "unmenu PopUp.Open\\ in\\ New\\ Tab")
 
 -- Register the clean entry point to the PopUp menu
+-- Move the popup open right click option to the top with a seperator component configured
 vim.cmd([[
-  anoremenu PopUp.Open\ in\ New\ Tab :lua _G.open_right_clicked_node_in_tab()<CR>
+  amenu 10.10 PopUp.-Sep- :
+  anoremenu 10.12 PopUp.Open\ in\ New\ Tab :lua _G.open_right_clicked_node_in_tab()<CR>
 ]])
