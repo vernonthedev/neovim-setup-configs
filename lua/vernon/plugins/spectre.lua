@@ -15,19 +15,20 @@ return {
       '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
       desc = "Search current word in project",
     },
-    {
-      "<leader>sw",
-      '<cmd>lua require("spectre").open_visual()<CR>',
-      mode = "v",
-      desc = "Search visual selection in project",
-    },
-    {
-      "<leader>sp",
-      '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-      desc = "Search current word in current file",
-    },
   },
   opts = {
-    open_cmd = "tabnew", 
+    open_cmd = "tabnew",
+    mapping = {
+      ["run_replace"] = {
+        map = "<leader>R",
+        cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+        desc = "Run replace all",
+      },
+      ["run_current_file_replace"] = {
+        map = "<leader>rc",
+        cmd = "<cmd>lua require('spectre.actions').run_current_file_replace()<CR>",
+        desc = "Replace all in current file",
+      },
+    },
   },
 }
