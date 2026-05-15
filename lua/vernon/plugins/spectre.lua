@@ -28,6 +28,6 @@ return {
     },
   },
   opts = {
-    open_cmd = "edit", 
+    open_cmd = "tabnew", 
   },
 }
