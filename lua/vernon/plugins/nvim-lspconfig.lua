@@ -5,14 +5,9 @@ return {
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
-    require("mason").setup()
-    
-    -- Mason-lspconfig sets up automatic server installation
-    require("mason-lspconfig").setup({
-      ensure_installed = { "vtsls" }, -- or "ts_ls"
-    })
-
-    -- Configure vtsls directly via vim.lsp.config
+    -- Configure vtsls (TypeScript) via Neovim 0.11+ native API.
+    -- Mason-lspconfig auto-enables other servers (lua_ls, rust_analyzer, etc.)
+    -- but vtsls is excluded from auto-enable in mason.lua so we set it up here.
     vim.lsp.config('vtsls', {
       cmd = { 'vtsls', '--stdio' },
       filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
@@ -27,7 +22,6 @@ return {
       },
     })
 
-    -- Enable the server for current and future buffers
     vim.lsp.enable('vtsls')
   end,
 }
