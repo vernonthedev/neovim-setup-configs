@@ -6,14 +6,17 @@ return {
   },
   config = function()
     require("mason").setup()
+    
+    -- Mason-lspconfig sets up automatic server installation
     require("mason-lspconfig").setup({
-      ensure_installed = { "vtsls" },
+      ensure_installed = { "vtsls" }, -- or "ts_ls"
     })
 
-    local lspconfig = require("lspconfig")
-    
-    -- Configure TypeScript LSP
-    lspconfig.vtsls.setup({
+    -- Configure vtsls directly via vim.lsp.config
+    vim.lsp.config('vtsls', {
+      cmd = { 'vtsls', '--stdio' },
+      filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      root_markers = { 'tsconfig.json', 'package.json', '.git' },
       settings = {
         typescript = {
           inlayHints = {
@@ -23,5 +26,8 @@ return {
         },
       },
     })
+
+    -- Enable the server for current and future buffers
+    vim.lsp.enable('vtsls')
   end,
 }
